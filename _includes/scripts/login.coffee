@@ -29,21 +29,23 @@ login = {
   success: (data, status, token) ->
     storage.set "login.user", data.login
       .set "login.created", new Date()
-    alert "Logged as #{data.login}"
     login.link.text "Logout"
       .off "click"
       .on "click", login.logout
+      .attr "alt", "Logout button"
+    alert "Logged as #{data.login}"
     true
   error: (request, status, error) ->
     storage.clear "login"
-    alert "#{status}: #{error}"
+    alert "Login #{status}: #{error}"
     true
   logout: (e) ->
     storage.clear()
-    alert "Logged out"
     $(e.target).text "Login"
       .off "click"
       .on "click", login.serve
+      .attr "alt", "Login button"
+    alert "Logged out"
     true
 }
 login.init()

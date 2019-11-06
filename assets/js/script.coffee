@@ -4,6 +4,7 @@
 # Includes
 {% include scripts/storage.coffee %}
 {% include scripts/login.coffee %}
+{% include scripts/commits.coffee %}
 {% comment %}
 {% include scripts/create.coffee %}
 {% include scripts/modal_alert.coffee %}
