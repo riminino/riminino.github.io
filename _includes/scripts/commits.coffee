@@ -3,7 +3,7 @@ commits = {
   init: () ->
     $.ajax "{{ site.github.api_url }}/repos/{{ site.github.repository_nwo }}/commits",
       method: "GET"
-      headers: {"Authorization": "token #{storage.get 'login.token'}"}
+      headers: if storage.get("login.token") then {"Authorization": "token #{storage.get 'login.token'}"} else {}
       success: commits.success
       error: commits.error
     true

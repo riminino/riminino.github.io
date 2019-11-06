@@ -55,7 +55,7 @@ storage = {
     storage.init()
     return if key?
       key.split(".").reduce (data, i) =>
-        data?[i]
+        return if data?[i] then data[i] else false
       , storage.get()
     else
       JSON.parse LZString.decompressFromBase64 localStorage.getItem storage.key()
