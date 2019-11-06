@@ -13,9 +13,23 @@ commits = {
   success: (data, status, token) ->
     data.forEach (c) ->
       commits.div.append(
-        $("<tr/>").append "<td>#{c.commit.message}</td><td><img src='#{c.author.avatar_url}' width='40'></td><td>#{c.commit.author.date}</td>"
+        $("<tr/>").append([
+          $("<td/>",{ text: "#{c.commit.message}" }),
+          $("<td/>").append(
+            $("<img/>",{ src: "#{c.author.avatar_url}", width: 40 })
+          ),
+          $("<td/>",{ text: "#{c.commit.comment_count}" }),
+          $("<td/>").append(
+            $("<span/>",{
+              text: "#{c.commit.author.date}"
+              datetime: "#{c.commit.author.date}"
+              "data-embed": true
+            })
+          )
+        ])
       )
       true
+    $("#commits tbody [datetime]").each -> dateTime @
     true
 }
 
