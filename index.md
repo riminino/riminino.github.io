@@ -11,6 +11,8 @@
   - want Turns, use Tags
   - want Story, use Commits
 
+{% include widgets/info.html %}
+
 # Commits
 
 {% include widgets/commits.html %}

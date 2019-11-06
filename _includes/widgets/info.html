@@ -1,0 +1,37 @@
+{%- assign github = site.github -%}
+{%- assign repository = github.public_repositories | where: "html_url", github.repository_url | first -%}
+{%- assign release = github.releases | first -%}
+{%- assign unix = repository.updated_at | date_to_rfc822 -%}
+- **Page**
+  - url: [`{{ page.url | absolute_url }}`]({{ page.url | absolute_url }})
+  - blob link on GitHub: [`{{ github.repository_nwo | append: "/blob/" | append: repository.default_branch | append: "/" | append: page.path }}`]({% include widgets/github_url.html page=page %})
+  - environment: `{{ github.environment }}`
+  - title: `{{ page.title }}`
+  - name: `{{ page.name }}`
+  - url: `{{ page.url }}`
+  - path: `{{ page.path }}`
+  - dir: `{{ page.dir }}`
+- **Repository**
+  - repository_nwo: [`{{ github.repository_nwo }}`]({{ github.repository_url }})
+  - homepage: [`{{ repository.homepage }}`]({{ repository.homepage }})
+  - default_branch: `{{ repository.default_branch }}`
+  - language: `{{ repository.language }}`
+  - size: `{{ repository.size }}`
+- **Version**
+  - build_revision: `{{ github.build_revision | truncate: 7, "" }}`
+  - updated_at: <code>{% include widgets/datetime.html datetime = unix %}</code>
+  - tag_name: `{{ release.tag_name }}`
+  - name: `{{ release.name }}`
+  - draft: `{{ release.draft }}`
+  - prerelease: `{{ release.prerelease }}`
+- **Type**
+  - is_user_page: `{{ github.is_user_page }}`
+  - is_project_page: `{{ github.is_project_page }}`
+  - fork: `{{ repository.fork }}`
+- **GitHub**
+  - organization_members size: `{{ github.organization_members.size }}`
+  - contributors: `{{ github.contributors.size }}`
+  - forks_count: `{{ repository.forks_count }}`
+  - stargazers_count: `{{ repository.stargazers_count }}`
+- **Remote theme**
+  - repository: `{{ site.remote_theme }}`
