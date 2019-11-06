@@ -6,7 +6,7 @@ dateTime = (e) ->
   month = day * 30
   year = month * 12
   decimals = $(e).data("decimals") || 0
-  diff = new Date().getTime() - new Date($(e).attr "datetime").getTime()
+  diff = new Date().getTime() - new Date(Date.parse $(e).attr "datetime").getTime()
   absolute = Math.abs diff
   # Check range
   if absolute < hour
