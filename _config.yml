@@ -1,0 +1,5 @@
+# Plugins list
+plugins:
+  - jekyll-coffeescript
+  - jekyll-default-layout
+  - jekyll-github-metadata
