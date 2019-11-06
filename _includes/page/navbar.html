@@ -1,0 +1,32 @@
+<nav id="navigation">
+  <div class="row">
+    <ul class="col">
+      {%- assign html_pages = site.html_pages | sort: "weight" -%}
+      {% for link in html_pages %}
+      <li class="{% if page.url == link.url %}active{% endif %}">
+        <a href="{{ link.url | relative_url }}">{{ link.title | default: "Home" }}</a>
+      </li>{% endfor %}
+      {%- assign sorted_collections = site.collections | sort: "weight" -%}
+      {%- for dropdown in sorted_collections -%}
+      {%- if dropdown.docs.size > 0 -%}
+      <li class="dropdown">
+        <a{% if page.collection == dropdown.label %} class="active"{% endif %} href="#">
+          {{ dropdown.label }}
+        </a>
+        <div class="dropdown-menu">
+          {%- assign collection_pages = dropdown.docs | sort: "weight" -%}
+          {% for link in collection_pages %}
+          <a class="{% if page.url == link.url %}active{% endif %}" href="{{ link.url | relative_url }}">{{ link.title }}</a>{% endfor %}
+        </div>
+      </li>
+      {% endif %}
+      {%- endfor -%}
+    </ul>
+    <ul>
+      <li>
+        <button id="login-button" alt="Login button">Login</button>
+        <!-- <a href="#modalLogin">Login</a> -->
+      </li>
+    </ul>
+  </div>
+</nav>
