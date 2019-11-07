@@ -1,0 +1,30 @@
+<main>
+  {% assign sections = content | split: "<!--section" %}
+  {% for section in sections %}
+    {% comment %} -------------------- Check section Class -------------------- {% endcomment %}
+    {%- assign tag = section | slice: 1, 3 -%}
+    {%- if tag == "-->" -%}
+      {%- assign class = section | slice: 0, 1 -%}
+    <section class="section{{ class }}">
+      {%- assign len = section.size -%}
+      {%- assign section_content = section | slice: 4, section.size -%}
+    {%- else -%}
+    {% comment %} -------------------- Normal section -------------------- {% endcomment %}
+    <section>
+      {%- assign tag = section | slice: 0, 3 -%}
+      {%- if tag == "-->" -%}
+        {%- assign section_content = section | slice: 3, section.size -%}
+      {%- else -%}
+        {%- assign section_content = section -%}
+      {%- endif -%}
+    {%- endif -%}
+    {% comment %} -------------------- Check columns -------------------- {% endcomment %}
+    {%- assign columns = section_content | split: "<!--column-->" -%}
+    {% unless columns.size == 1 %}<div class="row">{%- endunless -%}
+    {% for column in columns %}
+    <div class="col">
+{{ column | strip }}
+    </div><!-- close column -->{% endfor %}
+    {% unless columns.size == 1 %}</div>{%- endunless -%}
+  </section>{% endfor %}
+</main>
