@@ -3,8 +3,8 @@
 {%- assign release = github.releases | first -%}
 {%- assign unix = repository.updated_at | date_to_rfc822 -%}
 - **Page**
-  - url: [`{{ page.url | absolute_url }}`]({{ page.url | absolute_url }})
-  - blob link on GitHub: [`{{ github.repository_nwo | append: "/blob/" | append: repository.default_branch | append: "/" | append: page.path }}`]({% include widgets/github_url.html page=page %})
+  - url: [{{ page.url | absolute_url }}]({{ page.url | absolute_url }})
+  - link on GitHub: {% include widgets/github_link.html file=page.path complete=true %}
   - environment: `{{ github.environment }}`
   - title: `{{ page.title }}`
   - name: `{{ page.name }}`
@@ -12,8 +12,8 @@
   - path: `{{ page.path }}`
   - dir: `{{ page.dir }}`
 - **Repository**
-  - repository_nwo: [`{{ github.repository_nwo }}`]({{ github.repository_url }})
-  - homepage: [`{{ repository.homepage }}`]({{ repository.homepage }})
+  - repository_nwo: [{{ github.repository_nwo }}]({{ github.repository_url }})
+  - homepage: [{{ repository.homepage }}]({{ repository.homepage }})
   - default_branch: `{{ repository.default_branch }}`
   - language: `{{ repository.language }}`
   - size: `{{ repository.size }}`

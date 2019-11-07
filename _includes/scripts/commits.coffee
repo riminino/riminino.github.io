@@ -1,9 +1,15 @@
 commits = {
-  div: $("#commits tbody")
+  div: $("#commits")
+  body: $("#commits tbody")
   init: () ->
-    $.ajax "{{ site.github.api_url }}/repos/{{ site.github.repository_nwo }}/commits",
+    header = if storage.get("login.token") then {"Authorization": "token #{storage.get 'login.token'}"} else {}
+    data = {}
+    if commits.div.data "path" then data.path = commits.div.data "path"
+    if commits.div.data "author" then data.author = commits.div.data "author"
+    if commits.div then $.ajax "{{ site.github.api_url }}/repos/{{ site.github.repository_nwo }}/commits",
       method: "GET"
-      headers: if storage.get("login.token") then {"Authorization": "token #{storage.get 'login.token'}"} else {}
+      headers: header
+      data: data
       success: commits.success
       error: commits.error
     true
@@ -12,7 +18,7 @@ commits = {
     true
   success: (data, status, token) ->
     data.forEach (c) ->
-      commits.div.append(
+      commits.body.append(
         $("<tr/>").append([
           $("<td/>",{ text: "#{c.commit.message}" }),
           $("<td/>").append(

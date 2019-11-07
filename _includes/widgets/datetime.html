@@ -1,1 +1,8 @@
-<span datetime="{{ include.datetime }}" {% if include.embed %} data-embed="true" {% endif %}{% if include.decimals %} data-decimals="{{ include.decimals }}"{% endif %}>{{ include.datetime }}</span>
+{%- assign now = "now" | date_to_rfc822 -%}
+{%- assign datetime = include.datetime | default: now -%}
+<span datetime="{{ datetime }}" {% if include.embed %} data-embed="true" {% endif %}{% if include.decimals %} data-decimals="{{ include.decimals }}"{% endif %}>{{ datetime }}</span>
+{%- capture api -%}Render a span element with 'datetime' attribute.
+If `_includes/scripts/datetime.coffee` is included, show elapsed time or time ago.
+include.datetime|string|Date to render|
+include.embed|boolean|If `true` append elapsed time or time ago to the element, if `nil` use `title` attribute (mouseover)|nil
+{%- endcapture -%}

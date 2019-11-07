@@ -1,0 +1,39 @@
+{%- if include.file -%}
+{% comment %}
+--------------------
+ Render API for a file (include.file)
+--------------------
+{% endcomment %}
+{% assign file_name = include.file | split: '/' | last | remove: '.html' %}
+{% capture file_title %}{% include widgets/unslug.html string=file_name %}{% endcapture %}
+{% assign file_path =	'_includes/' | append: include.file %}
+## {{ file_title }}
+- File {% include widgets/github_link.html file=file_path %}
+{%- capture load -%}{% include {{ include.file }} %}{%- endcapture -%}
+{% assign rows = api | newline_to_br | strip_newlines | split: '<br />' %}
+{% for row in rows %}{% unless row.size == 0 or row contains "|" %}- {{ row }}
+{% endunless %}{% endfor %}
+{% if api contains "|" and api.size %}
+| Parameter | Type | Description | Initial |
+|:---|:---|:---|:---|{% endif %}
+{% for row in rows %}
+{%- if row contains "|" -%}{% assign col = row | split: "|" %}| `{{ col[0] }}` | *{{ col[1] }}* | {{ col[2] }} | `{{ col[3] }}` |
+{% endif %}{% endfor %}
+{% unless include.noexample %}
+- Example
+```liquid
+{% raw %}{% include {% endraw %}{{ include.file }}{% raw %} %}{% endraw %}
+```
+{{ load }}
+{% endunless %}
+{%- else if include.list -%}
+{% comment %}
+--------------------
+ Render API for a list (page[include.list])
+--------------------
+{% endcomment %}
+{% for file in page[include.list] %}
+{% assign path = file | prepend: "/" | prepend: include.list | append: ".html" %}
+{% include api/get.html file=path %}
+{% endfor %}
+{%- endif -%}

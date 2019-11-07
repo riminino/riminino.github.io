@@ -1,0 +1,8 @@
+{%- assign string = include.string | default: "hello_world" -%}
+{%- assign words = string | replace: '-', ' ' | replace: '_', ' ' | split: ' ' -%}
+{%- for word in words -%}{% if forloop.first %}{{ word | capitalize }}{% unless forloop.last %} {% endunless %}{% else %} {{ word }}{% unless forloop.last %} {% endunless %}{% endif %}
+{%- endfor -%}
+{%- capture api -%}
+Replace dashes and underscores with space and capitalize first word.
+include.string|string|The string to unslug|hello_world
+{%- endcapture -%}

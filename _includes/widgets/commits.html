@@ -1,4 +1,5 @@
-<table id="commits">
+{% if include.details %}<details><summary>Commits{% if include.path %} <code>{{ include.path }}</code>{% endif %}{% if include.author %} <code>{{ include.author }}</code>{% endif %}</summary>{% endif %}
+<table id="commits"{% if include.path %} data-path="{{ include.path }}"{% endif %}{% if include.author %} data-author="{{ include.author }}"{% endif %}>
   <thead>
     <th>Message</th>
     <th>Author</th>
@@ -7,3 +8,12 @@
   </thead>
   <tbody></tbody>
 </table>
+{% if include.details %}</details>{% endif %}
+{%- capture api -%}
+Render the list of commits as a table.
+Optional filters for author and path.
+Require {% include widgets/github_link.html file="_includes/scripts/commits.coffee" %}.
+include.details|boolean|Render the table inside a expandible 'details' element|nil
+include.path|string|Fetch commits only for the specified path|nil
+include.author|string|Fetch commits only for the specified author|nil
+{%- endcapture -%}

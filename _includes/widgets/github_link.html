@@ -1,0 +1,6 @@
+{%- assign link_to_file = include.file | default: page.path -%}
+[{% if include.complete %}{% include widgets/github_url.html file=link_to_file %}{% else %}{{ link_to_file }}{% endif %}]({% include widgets/github_url.html file=link_to_file %})
+{%- capture api -%}Render the HTML link on GitHub of the passed file
+include.file|string|Path of the file|page.path
+include.complete|boolean|`true` show absolute link, `nil` show relative link|nil
+{%- endcapture -%}

@@ -2,4 +2,6 @@
 {%- assign link_to_file = include.file | default: page.path -%}
 {%- assign repository = github.public_repositories | where: "html_url", github.repository_url | first -%}
 {{ github.repository_url | append: "/blob/" | append: repository.default_branch | append: "/" | append: link_to_file }}
-{% capture api %}file string `page.path` | File path for the GitHub link{% endcapture %}
+{%- capture api -%}Return the url on GitHub of the passed file.
+include.file|string|Path of the file|page.path
+{%- endcapture -%}
