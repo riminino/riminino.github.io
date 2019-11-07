@@ -5,23 +5,23 @@
 {% include page/head/meta.html %}
 {% include page/head/social.html %}
 
-{% include page/head/stylesheet.html %}
+
 
 {% endcomment %}
 {% include page/favicon.html %}
-
+{% include page/stylesheet.html %}
 {% include page/javascript.html %}
 
 </head>
   <body class="body-{{ page.title | slugify | default: 'no-title' }}">
 {% include page/navbar.html %}
+{% include page/main.html %}
 {% comment %}
 {% include page/header.html %}
 
-{% include page/main.html %}
+
 {% include page/modals.html %}
 {% include page/footer.html %}
 {% endcomment %}
-{{ content }}
   </body>
 </html>

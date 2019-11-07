@@ -1,0 +1,40 @@
+---
+---
+@import riminino/mixins
+@import syntax
+
+// HUMANIZE
+
+// BODY
+body
+  font-size: 18px
+
+// TABLES
+// Add cell paddings
+table
+  td, th
+    padding: 0.75em
+    vertical-align: top
+  th
+    border-bottom: 1px solid grey
+
+// HEADINGS
+
+// Correct h1 within article, aside, nav and section context
+h1
+  font-size: 2em
+  margin: 0.67em 0
+
+// Increase top margin
+@include headings('.col ')
+  margin-block-start: 3em
+@include headings('section:first-child .col ', ':first-child')
+  margin-block-start: 0
+
+code,
+kbd,
+samp
+  font-size: 1em
+
+section
+  padding: 1em

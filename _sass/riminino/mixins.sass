@@ -1,0 +1,5 @@
+// Headings: Mixin with pre-scope and condition
+@mixin headings($prescope: '', $condition: '')
+  @for $i from 1 through 6
+    #{$prescope}h#{$i}#{$condition}
+      @content
