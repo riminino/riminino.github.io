@@ -4,3 +4,22 @@ plugins:
   - jekyll-default-layout
   - jekyll-github-metadata
   - jekyll-titles-from-headings
+
+# COLLECTIONS
+# -----------------------
+
+# Output collection
+collections:
+  docs:
+    output: true
+
+# To have /collection/page/ links
+permalink: pretty
+
+# Defaults
+defaults:
+  # Set default layout in collections
+  - scope:
+      type: docs
+    values:
+      layout: default
