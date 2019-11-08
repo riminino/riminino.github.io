@@ -28,6 +28,8 @@ dateTime = (e) ->
   # Embed or add title attribute
   if $(e).data "embed"
     $(e).text "#{$(e).attr "datetime"} (#{out})"
+  else if $(e).data "replace"
+    $(e).text out
   else
     $(e).attr "title", out
   # Set every minute

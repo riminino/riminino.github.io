@@ -29,7 +29,7 @@ commits = {
             $("<span/>",{
               text: "#{c.commit.author.date}"
               datetime: "#{c.commit.author.date}"
-              "data-embed": true
+              "data-replace": true
             })
           )
         ])

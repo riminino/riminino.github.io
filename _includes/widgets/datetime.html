@@ -1,8 +1,9 @@
 {%- assign now = "now" | date_to_rfc822 -%}
 {%- assign datetime = include.datetime | default: now -%}
-<span datetime="{{ datetime }}" {% if include.embed %} data-embed="true" {% endif %}{% if include.decimals %} data-decimals="{{ include.decimals }}"{% endif %}>{{ datetime }}</span>
+<span datetime="{{ datetime }}" {% if include.embed %} data-embed="true" {% endif %}{% if include.decimals %} data-decimals="{{ include.decimals }}"{% endif %}{% if include.replace %} data-replace="true"{% endif %}>{{ datetime }}</span>
 {%- capture api -%}Render a span element with `datetime` attribute.
-If `_includes/scripts/datetime.coffee` is included, show elapsed time or time ago.
+If {% include widgets/github_link.html file="_includes/scripts/datetime.coffee" %} is included show elapsed time or time ago on mouseover.
 include.datetime|string|Date to render|nil
-include.embed|boolean|If `true` append elapsed time or time ago to the element, if `nil` use `title` attribute (mouseover)|nil
+include.embed|boolean|If `true` append elapsed time or time ago to the text|nil
+include.replace|boolean|If `true` replace the text with elapsed time or time ago|nil
 {%- endcapture -%}
