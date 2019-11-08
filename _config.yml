@@ -23,3 +23,8 @@ defaults:
       type: docs
     values:
       layout: default
+
+# CSS
+# -----------------------
+# css:
+#   syntax: rouge.css

@@ -1,2 +1,3 @@
 <!-- Stylesheet -->
 <link rel="stylesheet" href="{{ '/assets/css/stylesheet.css' | relative_url }}?version={{ site.github.build_revision | truncate: 7, "" }}">
+<link rel="stylesheet" href="{% assign syntax = site.css.syntax | default: 'github.css' | prepend: '/assets/css/syntax/' %}{{ syntax | relative_url }}">

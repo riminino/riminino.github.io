@@ -1,7 +1,7 @@
 ---
 ---
 @import riminino/mixins
-@import syntax
+// @import syntax
 
 // HUMANIZE
 
@@ -12,6 +12,8 @@ body
 // TABLES
 // Add cell paddings
 table
+  margin: 1em
+  width: calc(100% - 2em)
   td, th
     padding: 0.75em
     vertical-align: top
@@ -30,8 +32,13 @@ h1
   margin-block-start: 0
 
 // CODE
+// Font size
 code, kbd, samp
   font-size: .92em
+// Pre padding
+pre.highlight
+  padding: .8em
+  white-space: pre-wrap
 
 // LAYOUT
 section
@@ -40,3 +47,21 @@ section
 // SUMMARY
 summary
   cursor: pointer
+  outline: none
+
+// LINKS
+a
+  &:link,
+  &:visited
+    color: MediumBlue
+  &:hover
+    color: Crimson
+  &:active
+    text-decoration: transparent
+
+nav
+  ul#access
+    list-style: none
+    position: absolute
+    right: 1em
+    top: 0em
