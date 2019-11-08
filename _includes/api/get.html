@@ -15,16 +15,17 @@
 {% endunless %}{% endfor %}
 {% if api contains "|" and api.size %}
 | Parameter | Type | Description | Initial |
-|:---|:---|:---|:---|{% endif %}
+|:---|:---|:---|:---|
 {% for row in rows %}
 {%- if row contains "|" -%}{% assign col = row | split: "|" %}| `{{ col[0] }}` | *{{ col[1] }}* | {{ col[2] }} | `{{ col[3] }}` |
-{% endif %}{% endfor %}
+{% endif %}{% endfor %}{%- endif -%}
 {% unless include.noexample %}
-- Example
+<details markdown="1"><summary>Example</summary>
 ```liquid
 {% raw %}{% include {% endraw %}{{ include.file }}{% raw %} %}{% endraw %}
 ```
-{{ load }}
+{{ load |markdownify}}
+</details>
 {% endunless %}
 {%- else if include.list -%}
 {% comment %}
