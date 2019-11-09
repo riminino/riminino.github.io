@@ -6,7 +6,7 @@ commits = {
     data = {}
     if commits.div.data "path" then data.path = commits.div.data "path"
     if commits.div.data "author" then data.author = commits.div.data "author"
-    if commits.div then $.ajax "{{ site.github.api_url }}/repos/{{ site.github.repository_nwo }}/commits",
+    if commits.div.length then $.ajax "{{ site.github.api_url }}/repos/{{ site.github.repository_nwo }}/commits",
       method: "GET"
       headers: header
       data: data

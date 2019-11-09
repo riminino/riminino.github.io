@@ -15,4 +15,4 @@ weight: 5
 
 {% include widgets/releases.html %}
 
-Create a release on GitHub [New release]({{ site.github.repository_url }})
+Create a release on GitHub: [New release]({{ site.github.repository_url | append: "/releases/new"}})
