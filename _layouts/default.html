@@ -16,12 +16,12 @@
   <body class="body-{{ page.title | slugify | default: 'no-title' }}">
 {% include page/navbar.html %}
 {% include page/main.html %}
+{% include page/footer.html %}
 {% comment %}
 {% include page/header.html %}
 
 
 {% include page/modals.html %}
-{% include page/footer.html %}
 {% endcomment %}
   </body>
 </html>

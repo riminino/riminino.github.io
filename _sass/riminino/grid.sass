@@ -1,0 +1,47 @@
+// Grid
+// Section
+section
+  display: -ms-flexbox
+  display: flex
+  -ms-flex-wrap: wrap
+  flex-wrap: wrap
+  // padding-left: 1.5em
+  // padding-right: 1.5em
+  // &:first-child
+  //   padding-top: 2em
+  // &:last-child
+  //   padding-bottom: 
+  @for $i from 1 through length($bg_sections)
+    &.section#{$i}
+      background: nth($bg_sections, $i)
+@media (min-width: $small_screen)
+  section
+    padding: 0
+.row
+  margin: 0 auto
+  display: -ms-flexbox
+  display: flex
+  -ms-flex-wrap: wrap
+  flex-wrap: wrap
+  flex-direction: column
+@media (min-width: $small_screen)
+  .row
+    flex-direction: row
+.col
+  -ms-flex-preferred-size: 0
+  flex-basis: 0
+  -ms-flex-positive: 1
+  flex-grow: 1
+  // max-width: 100%
+  position: relative
+  // .col + .col
+  //   margin-left: 1em
+  &:only-child
+    margin: 0 auto
+@media (min-width: $small_screen)
+  .col:not(:only-child)
+    max-width: 100%
+    &:not(:first-child)
+      margin-left: 0.5em
+    &:not(:last-child)
+      margin-right: 0.5em
