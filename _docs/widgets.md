@@ -6,6 +6,7 @@ widgets:
   - github_link
   - datetime
   - commits
+  - releases
 ---
 
 # Widgets

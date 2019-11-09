@@ -6,6 +6,7 @@
 {% include scripts/login.coffee %}
 {% include scripts/datetime.coffee %}
 {% include scripts/commits.coffee %}
+{% include scripts/releases.coffee %}
 {% comment %}
 {% include scripts/create.coffee %}
 {% include scripts/modal_alert.coffee %}

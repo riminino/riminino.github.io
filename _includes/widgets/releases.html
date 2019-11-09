@@ -1,0 +1,16 @@
+{% if include.details %}<details><summary>Releases</summary>{% endif %}
+<table id="releases">
+  <thead>
+    <th>Draft</th>
+    <th>Name</th>
+    <th>Body</th>
+    <th>Date</th>
+  </thead>
+  <tbody></tbody>
+</table>
+{% if include.details %}</details>{% endif %}
+{%- capture api -%}
+Render the list of releases as a table.
+Require {% include widgets/github_link.html file="_includes/scripts/releases.coffee" %}.
+include.details|boolean|Render the table inside a expandible `details` element|nil
+{%- endcapture -%}
